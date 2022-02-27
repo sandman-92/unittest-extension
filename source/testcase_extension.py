@@ -2,7 +2,11 @@ from testmethods_extension import TestMethods
 
 class TestCaseExtension(TestMethods):
     """
-
+    This class can dynamically create a TestCase using kwargs:
+      - test_objects: expects a list of arguments to pass to the method
+      - use_method: expects a string with the assertion method to use; eg assertEqual, customAssertion ect.
+      - test_name: name of this test case
+      - **kwargs: any other kwargs get passed to the test method
     """
 
     def __init__(self, test_objects=[], use_method=None, test_name=None, **kwargs):
