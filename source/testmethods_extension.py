@@ -5,6 +5,10 @@ import unittest
 
 
 class TestMethods(unittest.TestCase):
+    """
+
+    """
+
 
     def __init__(self, methodName="runTest"):
 
