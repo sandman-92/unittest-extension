@@ -40,6 +40,7 @@ class TestCaseExtension(TestMethods):
 
         method_args = method.__code__.co_varnames
         pass_kwargs = {}
+
         for key, arg in self.kwargs.items():
             if key in method_args:
                 pass_kwargs[key]=arg
