@@ -5,7 +5,11 @@ import unittest
 
 class TestMethods(unittest.TestCase):
     """
+    add custom assertion methods here
 
+    expected structure is
+    def <assertion method name>(object1, object2, ... **kwargs):
+        do stuff
     """
 
 

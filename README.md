@@ -1,7 +1,7 @@
 # unittest-extension
 extensions to the unittest python module
 
-These extensions allow the dynamic creation of unittest.TestCases in scrips.
+These extensions allow the dynamic creation of unittest.TestCases in scripts.
 The result class saves successful results. I have also added a NULL test function, this is
 useful for cases where you may need to see whatever data in the results, but a pass/fail unit
 test is not required.
