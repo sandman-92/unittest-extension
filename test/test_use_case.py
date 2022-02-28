@@ -27,14 +27,7 @@ class TestUseCase(unittest.TestCase):
 
         test_run.run(result)
 
-        if len(result.successes) == 1:
-
-            pass
-
-        else:
-
-            test, exc = result.errors[0]
-            raise AssertionError(exc)
+        self.assertEqual(1, len(result.successes))
 
     def test_failure(self):
 
@@ -43,10 +36,7 @@ class TestUseCase(unittest.TestCase):
 
         test_run.run(result)
 
-        if len(result.failures) == 1:
-            pass
-        else:
-            raise AssertionError("this test should have failed")
+        self.assertEqual(1, len(result.failures))
 
     def test_result_print(self):
 
@@ -100,3 +90,14 @@ class TestUseCase(unittest.TestCase):
         warning = result.errors[0][1]
         self.assertIn('UserWarning', warning)
 
+    def test_too_many_kwargs(self):
+        """
+
+        :return:
+        """
+
+        test = TestCaseExtension(test_objects=[1,1], use_method='assertEqual', useless_kwarg='nothing', msg='this should go in')
+        result = TestResultExtension()
+        test.run(result)
+
+        self.assertEqual(1, len(result.successes))

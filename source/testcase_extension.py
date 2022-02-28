@@ -38,9 +38,15 @@ class TestCaseExtension(TestMethods):
             msg = "use_method is empty or '{0}' is not a method defined in TestMethods or unittest.TestCase".format(self.use_method)
             raise UserWarning(msg)
 
+        method_args = method.__code__.co_varnames
+        pass_kwargs = {}
+        for key, arg in self.kwargs.items():
+            if key in method_args:
+                pass_kwargs[key]=arg
+
         try:
 
-            self.method_returned = method(*self.test_objects, **self.kwargs)
+            self.method_returned = method(*self.test_objects, **pass_kwargs)
 
         except AssertionError as exc:
             #test has failed
