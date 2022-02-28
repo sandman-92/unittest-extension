@@ -26,9 +26,7 @@ class TestResultExtension(unittest.TestResult):
         self.nulls.append((test, *args))
 
     def __str__(self):
-        """
 
-        """
         result_attr = ['successes', 'failures', 'errors', 'nulls', 'skipped', 'expectedFailures', 'unexpectedSuccesses']
         ret_str = "\n"
         for attr in result_attr:

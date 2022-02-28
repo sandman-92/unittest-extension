@@ -10,7 +10,7 @@ class TestCaseExtension(TestMethods):
     """
 
     def __init__(self,  test_objects=[],
-                        use_method=None,
+                        use_method="",
                         test_name=None,
                         unittest_expecting_failure=False,
                         unittest_skip = False,
@@ -35,7 +35,7 @@ class TestCaseExtension(TestMethods):
         method = getattr(self, self.use_method, "NA")
 
         if method == "NA":
-            msg = "{0} is not a method defined in TestMethods or unittest.TestCase"
+            msg = "use_method is empty or '{0}' is not a method defined in TestMethods or unittest.TestCase".format(self.use_method)
             raise UserWarning(msg)
 
         try:
@@ -49,6 +49,7 @@ class TestCaseExtension(TestMethods):
         except:
             #test has errored
             raise
+
         else:
 
             return self.method_returned

@@ -25,3 +25,14 @@ for test_instruction in instructions:
     
 print(result)
 ```
+will output:
+```
+number of successes: 1
+number of failures: 0
+number of errors: 0
+number of nulls: 1
+number of skipped: 0
+number of expectedFailures: 0
+number of unexpectedSuccesses: 0
+
+```

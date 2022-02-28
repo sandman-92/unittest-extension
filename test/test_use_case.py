@@ -19,8 +19,6 @@ class TestUseCase(unittest.TestCase):
         #for test in test_run:
         test_run.run(result)
 
-        if len(result.nulls) == 1: pass
-        else: raise AssertionError
 
     def test_assertequal(self):
 
@@ -62,7 +60,43 @@ class TestUseCase(unittest.TestCase):
             test = TestCaseExtension(**instruction)
             test.run(result)
 
-        print(result)
+        res = result.__str__()
+        expected_result = ("\n"
+                           "number of successes: 1\n"
+                           "number of failures: 0\n"
+                           "number of errors: 0\n"
+                           "number of nulls: 1\n"
+                           "number of skipped: 0\n"
+                           "number of expectedFailures: 0\n"
+                           "number of unexpectedSuccesses: 0\n")
 
-if __name__ == "__main__":
-    unittest.main()
+        self.assertEqual(res, expected_result)
+
+    def test_result_error(self):
+
+        test = TestCaseExtension(test_objects=[], use_method='assertEqual')
+        result = TestResultExtension()
+
+        test.run(result)
+        expected_result = ("\n"
+                           "number of successes: 0\n"
+                           "number of failures: 0\n"
+                           "number of errors: 1\n"
+                           "number of nulls: 0\n"
+                           "number of skipped: 0\n"
+                           "number of expectedFailures: 0\n"
+                           "number of unexpectedSuccesses: 0\n")
+        self.assertEqual(expected_result, result.__str__())
+
+    def test_no_method_warning(self):
+        """
+        this tests a user warning is raised if no method is provided
+        :return:
+        """
+        test = TestCaseExtension(test_objects=[1,1])
+        result = TestResultExtension()
+        test.run(result)
+
+        warning = result.errors[0][1]
+        self.assertIn('UserWarning', warning)
+
