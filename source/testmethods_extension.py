@@ -14,6 +14,6 @@ class TestMethods(unittest.TestCase):
 
         super(TestMethods, self).__init__(methodName=methodName)
 
-    def NULL_test(self, *args, **kwargs):
+    def NULL(self, *args, **kwargs):
 
         setattr(self, '__null__', True)

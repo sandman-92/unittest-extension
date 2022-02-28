@@ -1,4 +1,4 @@
-from testmethods_extension import TestMethods
+from source.testmethods_extension import TestMethods
 
 class TestCaseExtension(TestMethods):
     """
@@ -12,8 +12,8 @@ class TestCaseExtension(TestMethods):
     def __init__(self, test_objects=[], use_method=None, test_name=None, **kwargs):
         self.test_name = test_name
         self.test_objects = test_objects
-        self.use_method=use_method
-        self.kwargs=kwargs
+        self.use_method = use_method
+        self.kwargs = kwargs
 
         self.method_returned = None
 

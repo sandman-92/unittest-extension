@@ -1,2 +1,2 @@
 # unittest-extension
-extensions to the unittes python module
+extensions to the unittest python module
