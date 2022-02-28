@@ -1,4 +1,4 @@
-from source.testmethods_extension import TestMethods
+from .testmethods_extension import TestMethods
 
 class TestCaseExtension(TestMethods):
     """
@@ -9,7 +9,17 @@ class TestCaseExtension(TestMethods):
       - **kwargs: any other kwargs get passed to the test method
     """
 
-    def __init__(self, test_objects=[], use_method=None, test_name=None, **kwargs):
+    def __init__(self,  test_objects=[],
+                        use_method=None,
+                        test_name=None,
+                        unittest_expecting_failure=False,
+                        unittest_skip = False,
+                        unittest_skip_why = None,
+                        **kwargs):
+
+        self.__unittest_expecting_failure__ = unittest_expecting_failure
+        self.__unittest_skip__ = unittest_skip
+        self.__unittest_skip_why__ = unittest_skip_why
         self.test_name = test_name
         self.test_objects = test_objects
         self.use_method = use_method
@@ -42,3 +52,4 @@ class TestCaseExtension(TestMethods):
         else:
 
             return self.method_returned
+

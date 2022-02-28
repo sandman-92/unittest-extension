@@ -17,10 +17,21 @@ class TestResultExtension(unittest.TestResult):
 
         if hasattr(test, '__null__'):
             #test is a null test
-            self.addNull((test, *args))
+            self.addNull((test, 'null', *args))
         else:
-            self.successes.append((test, *args))
+            self.successes.append((test, 'pass', *args))
 
     def addNull(self, test, *args):
 
         self.nulls.append((test, *args))
+
+    def __str__(self):
+        """
+
+        """
+        result_attr = ['successes', 'failures', 'errors', 'nulls', 'skipped', 'expectedFailures', 'unexpectedSuccesses']
+        ret_str = "\n"
+        for attr in result_attr:
+            ret_str += 'number of {0}: {1}\n'.format(attr, len(getattr(self, attr)))
+        return ret_str
+

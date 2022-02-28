@@ -1,1 +1,4 @@
 .idea
+*.pyc
+*.py~
+*/__pycache__

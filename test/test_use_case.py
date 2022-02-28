@@ -50,3 +50,19 @@ class TestUseCase(unittest.TestCase):
         else:
             raise AssertionError("this test should have failed")
 
+    def test_result_print(self):
+
+        instructions = [
+            {"test_objects":[1,1], "use_method":'assertEqual'},
+            {"use_method":'NULL'},
+        ]
+        result = TestResultExtension()
+        for instruction in instructions:
+
+            test = TestCaseExtension(**instruction)
+            test.run(result)
+
+        print(result)
+
+if __name__ == "__main__":
+    unittest.main()
