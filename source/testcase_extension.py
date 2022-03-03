@@ -35,7 +35,7 @@ class TestCaseExtension(TestMethods):
         method = getattr(self, self.use_method, "NA")
 
         if method == "NA":
-            msg = "use_method is empty or '{0}' is not a method defined in TestMethods or unittest.TestCase".format(self.use_method)
+            msg = "use_method is empty or '{0}' is not defined in TestMethods or TestCase".format(self.use_method)
             raise UserWarning(msg)
 
         method_args = method.__code__.co_varnames
