@@ -13,6 +13,8 @@ class TestResultExtension(unittest.TestResult):
         self.nulls = []
         super(TestResultExtension, self).__init__(stream=stream,
                                 descriptions=descriptions, verbosity=verbosity)
+
+
     def addSuccess(self, test, *args):
         """
         This function overwrites the default addSuccess function which is empty, successes are now saved. If the __null__
