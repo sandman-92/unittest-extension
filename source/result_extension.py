@@ -14,6 +14,13 @@ class TestResultExtension(unittest.TestResult):
         super(TestResultExtension, self).__init__(stream=stream,
                                 descriptions=descriptions, verbosity=verbosity)
     def addSuccess(self, test, *args):
+        """
+        This function overwrites the default addSuccess function which is empty, successes are now saved. If the __null__
+        attribute is present then the test is added to the null tests
+        :param test: TestCase object
+        :param args: *args
+        :return: None
+        """
 
         if hasattr(test, '__null__'):
             #test is a null test
