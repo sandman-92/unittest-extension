@@ -43,6 +43,8 @@ class TestCaseExtension(TestMethods):
 
         for key, arg in self.kwargs.items():
             if key in method_args:
+
+                # pass kwargs ensures that unittest.TestCase doesnt error when too many kwargs are given
                 pass_kwargs[key]=arg
 
         try:
