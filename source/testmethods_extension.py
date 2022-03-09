@@ -18,7 +18,7 @@ class TestMethods(unittest.TestCase):
         super(TestMethods, self).__init__(methodName=methodName)
 
     def coverage(self):
-        pass
+        return None
 
     def NULL(self, *args, **kwargs):
 
